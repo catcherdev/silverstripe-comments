@@ -7,7 +7,7 @@
  */
 class Comment extends DataObject {
 	
-	private static $db = array(
+	public static $db = array(
 		"Name"			=> "Varchar(200)",
 		"Comment"		=> "Text",
 		"Email"			=> "Varchar(200)",
@@ -19,27 +19,27 @@ class Comment extends DataObject {
 		'AllowHtml'		=> "Boolean"
 	);
 
-	private static $has_one = array(
+	public static $has_one = array(
 		"Author"		=> "Member"
 	);
 	
-	private static $default_sort = '"Created" DESC';
+	public static $default_sort = '"Created" DESC';
 	
-	private static $has_many = array();
+	public static $has_many = array();
 	
-	private static $many_many = array();
+	public static $many_many = array();
 	
-	private static $defaults = array(
+	public static $defaults = array(
 		"Moderated" => 1,
 		"IsSpam" => 0
 	);
 	
-	private static $casting = array(
+	public static $casting = array(
 		'AuthorName' => 'Varchar',
 		'RSSName' => 'Varchar'
 	);
 
-	private static $searchable_fields = array(
+	public static $searchable_fields = array(
 		'Name',
 		'Email',
 		'Comment',
@@ -47,7 +47,7 @@ class Comment extends DataObject {
 		'BaseClass',
 	);
 	
-	private static $summary_fields = array(
+	public static $summary_fields = array(
 		'Name' => 'Submitted By',
 		'Email' => 'Email',
 		'Comment' => 'Comment',

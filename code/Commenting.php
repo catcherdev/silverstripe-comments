@@ -17,12 +17,12 @@ class Commenting {
 	/**
 	 * @var array map of enabled {@link DataObject} and related configuration
 	 */
-	private static $enabled_classes = array();
+	public static $enabled_classes = array();
 	
 	/**
 	 * @var array default configuration values
 	 */
-	private static $default_config = array(
+	public static $default_config = array(
 		'require_login' => false, // boolean, whether a user needs to login
 		'required_permission' => false,  // required permission to comment (or array of permissions)
 		'include_js' => true, // Enhance operation by ajax behaviour on moderation links
@@ -58,7 +58,7 @@ class Commenting {
 		
 		self::$enabled_classes[$class] = $settings;
 
-		$class::add_extension('CommentsExtension');
+		$class::add_extension($class, 'CommentsExtension');
 	}
 	
 	/**
@@ -72,7 +72,7 @@ class Commenting {
 			unset(self::$enabled_classes[$class]);
 		}
 		
-		$class::remove_extension('CommentsExtension');
+		$class::remove_extension($class, 'CommentsExtension');
 	}
 
 	/**
